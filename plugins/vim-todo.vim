@@ -9,8 +9,7 @@ endif
 
 let s:path = expand('<sfile>:p:h')
 
-python << EOF
-
+python << endpython
 import sys
 import os
 import vim
@@ -18,23 +17,30 @@ script_path = vim.eval('s:path')
 lib_path = os.path.join(script_path, '..')
 sys.path.insert(0, lib_path)
 import vim_todo 
-# vim_todo.hello_world()
-EOF
-
-function! TodoHello()
-python << EOF
-vim_todo.hello_world()
-EOF
-endfunction
-
-function! TodoToggle(line)
-python << endpython
-line = vim.eval("a:line")
-print vim_todo.toggle_todo(line)
 endpython
+
+function! TodoToggle()
+python << endpython
+line = vim.eval("getline(line('.'))")
+updated = vim_todo.toggle_todo(line)
+# TODO: Proect against quotes.. 
+# updated = updated.replace('"', '\"')
+# TODO: Figure out how to make the function return this...
+vim.command('return "%s"' % updated)
+# Test here...
+vim.command("let l:result = '%s'" % updated)
+endpython
+return l:result
+" if l:something == 1
+" "     return 'hi'
+" else
+" "     return 'bye'
+" endif
 endfunction
 
 " Testing...
+
+command! -nargs=0 -range=1 TodoToggle call TodoToggle()
 
 " Map keyboard shortcuts by default.
 if !exists('g:vim_todo_map_keys')
@@ -44,7 +50,7 @@ endif
 if g:vim_todo_map_keys
 
 	" Done / Todo
-	nnoremap <Leader>od :.!text-task-toggle<Cr>$
+	nnoremap <Leader>od :.TodoToggle<Cr>$
 	" nnoremap <Leader>d :.!text-task-toggle<Cr>$
 	nnoremap <Leader>ol :!text-list-todos %<Cr>
 
