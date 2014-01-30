@@ -21,13 +21,20 @@ import vim_todo
 # vim_todo.hello_world()
 EOF
 
-function! VimTodoHello()
+function! TodoHello()
 python << EOF
 vim_todo.hello_world()
 EOF
 endfunction
 
+function! TodoToggle(line)
+python << endpython
+line = vim.eval("a:line")
+print vim_todo.toggle_todo(line)
+endpython
+endfunction
 
+" Testing...
 
 " Map keyboard shortcuts by default.
 if !exists('g:vim_todo_map_keys')
