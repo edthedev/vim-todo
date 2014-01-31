@@ -26,7 +26,7 @@ updated = vim_todo.toggle_todo(line)
 # TODO: Proect against quotes.. 
 # updated = updated.replace('"', '\"')
 # TODO: Figure out how to make the function return this...
-vim.command('return "%s"' % updated)
+# vim.command('return "%s"' % updated)
 # Test here...
 vim.command("let l:result = '%s'" % updated)
 endpython
@@ -40,7 +40,7 @@ endfunction
 
 " Testing...
 
-command! -nargs=0 -range=1 TodoToggle call TodoToggle()
+" command! -nargs=0 -range=1 TodoToggle call TodoToggle()
 
 " Map keyboard shortcuts by default.
 if !exists('g:vim_todo_map_keys')
@@ -50,7 +50,9 @@ endif
 if g:vim_todo_map_keys
 
 	" Done / Todo
-	nnoremap <Leader>od :.TodoToggle<Cr>$
+""	nnoremap <Leader>od :.TodoToggle<Cr>$
+	nnoremap <Leader>od :s/.*/\=TodoToggle()/<Cr>$
+
 	" nnoremap <Leader>d :.!text-task-toggle<Cr>$
 	nnoremap <Leader>ol :!text-list-todos %<Cr>
 
