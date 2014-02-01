@@ -51,7 +51,7 @@ if g:vim_todo_keys
 " TODO: Capture comment characters as a first group, and put them back at the
 " front.
 	:nnoremap <Leader>od :s/.*/\=TodoToggle()/<Cr>$
-	:nnoremap <Leader>ol :call TodoList()
+	:nnoremap <Leader>ol :call TodoList()<Cr>
 
 	" nnoremap <Leader>d :.!text-task-toggle<Cr>$
 	"nnoremap <Leader>ol :!text-list-todos %<Cr>

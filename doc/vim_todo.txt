@@ -1,0 +1,19 @@
+*vim_todo* - Mark lines TODO: and DONE:
+
+http://github.com/edthedev/vim_todo
+
+Configuration
+
+	Enable the built in keyboard mappings with:
+		let g:vim_todo_keys = 1
+
+Keyboard Mappings
+
+	<Leader>od - Toggle the current line.
+		A line with TODO: or DONE: 
+			will become the other.
+		A line with neither will gain TODO:
+	
+	<Leader>ol - List all TODO lines
+		in the current buffer.
+
