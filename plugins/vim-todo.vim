@@ -39,19 +39,19 @@ endpython
 endfunction
 
 " Map keyboard shortcuts by default.
-if !exists('g:vim_todo_map_keys')
-	let g:vim_todo_map_keys = 1
+if !exists('g:vim_todo_keys')
+	let g:vim_todo_keys = 1
 endif
 
-if g:vim_todo_map_keys
+if g:vim_todo_keys
 
 	" Done / Todo
 	" TODO: Could probably pass the captured group as an argument to
 	" TodoToggle...
 " TODO: Capture comment characters as a first group, and put them back at the
 " front.
-	nnoremap <Leader>od :s/.*/\=TodoToggle()/<Cr>$
-	nnoremap <Leader>ol :call TodoList()
+	:nnoremap <Leader>od :s/.*/\=TodoToggle()/<Cr>$
+	:nnoremap <Leader>ol :call TodoList()
 
 	" nnoremap <Leader>d :.!text-task-toggle<Cr>$
 	"nnoremap <Leader>ol :!text-list-todos %<Cr>
@@ -60,8 +60,8 @@ if g:vim_todo_map_keys
 	" :nnoremap <Leader>os :%!done_to_top<Cr>
 
 	" List organizer progress of TODO / DONE / WAITING
-	:nnoremap <Leader>op :!text-task-progress %<Cr>
+	" ":nnoremap <Leader>op :!text-task-progress %<Cr>
 	" Waiting 
-	:nnoremap <Leader>ow :.!text-task-toggle -w<Cr>$
+	" ":nnoremap <Leader>ow :.!text-task-toggle -w<Cr>$
 
 endif
