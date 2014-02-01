@@ -28,6 +28,16 @@ endpython
 return l:result
 endfunction
 
+function! TodoList()
+python << endpython
+# print dir(vim_todo)
+this_file = vim.eval("bufname('%')")
+list_of_todos = vim_todo.list_todos([this_file])
+for todo in list_of_todos:
+	vim.command("echom '%s'" % todo)
+endpython
+endfunction
+
 " Map keyboard shortcuts by default.
 if !exists('g:vim_todo_map_keys')
 	let g:vim_todo_map_keys = 1
@@ -41,9 +51,10 @@ if g:vim_todo_map_keys
 " TODO: Capture comment characters as a first group, and put them back at the
 " front.
 	nnoremap <Leader>od :s/.*/\=TodoToggle()/<Cr>$
+	nnoremap <Leader>ol :call TodoList()
 
 	" nnoremap <Leader>d :.!text-task-toggle<Cr>$
-	nnoremap <Leader>ol :!text-list-todos %<Cr>
+	"nnoremap <Leader>ol :!text-list-todos %<Cr>
 
 	" Sort file by completed vs TODO lines
 	" :nnoremap <Leader>os :%!done_to_top<Cr>

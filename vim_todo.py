@@ -3,11 +3,6 @@
 from itertools import cycle
 import re
 
-# TODO: Convert into vimscript wrapped python functions.
-
-def hello_world():
-    print "Hello World!"
-
 TODO = 'TODO:'
 TASK_STATES = [TODO, 'DONE:', 'WONT:','WAITING:'] 
 
@@ -35,3 +30,20 @@ def toggle_todo(line):
     todoer = re.compile('^', re.IGNORECASE)
     return prefix + todoer.sub(TODO + ' ', line, count = 1)
 
+def list_todos(filelist):
+    ''' List all TODO lines from a file. '''
+#    count = 0
+    interesting_lines = ['TODO']
+    result_list = []
+    for filename in filelist:
+      # print arg
+      f = open(filename, 'r')
+      lines = f.readlines()
+      f.close()
+      for line in lines:
+        for mark in interesting_lines:
+          if mark in line:
+            result_list.append(line.replace('\n', ''))
+#           count += 1
+    return result_list
+#     print "Found %d TODO lines." % count
