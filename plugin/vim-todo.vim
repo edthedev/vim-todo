@@ -65,10 +65,6 @@ if g:vim_todo_keys
 	" List organizer progress of TODO / DONE / WAITING
 	:nnoremap <Leader>op :call TodoProgress()<Cr>
 
-
-	" nnoremap <Leader>d :.!text-task-toggle<Cr>$
-	"nnoremap <Leader>ol :!text-list-todos %<Cr>
-
 	" Sort file by completed vs TODO lines
 	" :nnoremap <Leader>os :%!done_to_top<Cr>
 

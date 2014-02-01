@@ -11,7 +11,7 @@ def toggle_todo(line):
 # Alternate to the next task state in the cycle.
     statecycle = cycle(TASK_STATES)
     next = statecycle.next()
-    
+
     for state in TASK_STATES:
         current, next = next, statecycle.next()
 #         print current
