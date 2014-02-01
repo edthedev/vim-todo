@@ -17,3 +17,8 @@ Keyboard Mappings
 	<Leader>ol - List all TODO lines
 		in the current buffer.
 
+    <Leader>op - Display completion count 
+        for the current buffer.
+
+        i.e. Completed: 1/4 
+

@@ -53,9 +53,6 @@ def todo_progress(filelist):
     TODO = 'todo:'
     WAITING = 'waiting:'
 
-    parser = optparse.OptionParser()
-    (options, args) = parser.parse_args()
-
     word_count = {}
     for filename in filelist:
         f = open(filename, 'r')
