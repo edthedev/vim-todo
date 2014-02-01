@@ -47,3 +47,31 @@ def list_todos(filelist):
 #           count += 1
     return result_list
 #     print "Found %d TODO lines." % count
+
+def todo_progress(filelist):
+    DONE = 'done:'
+    TODO = 'todo:'
+    WAITING = 'waiting:'
+
+    parser = optparse.OptionParser()
+    (options, args) = parser.parse_args()
+
+    word_count = {}
+    for filename in filelist:
+        f = open(filename, 'r')
+        content = f.readlines()
+        f.close()
+        done = 0
+        todo = 0
+        waiting = 0
+
+        for line in content:
+            low_line = line.lower()
+            if TODO in low_line:
+                todo+=1
+            elif DONE in low_line:
+                done+= 1
+            elif WAITING in low_line:
+                waiting += 1
+
+    return "Completed: %d/%d" % (done, todo+waiting+done)

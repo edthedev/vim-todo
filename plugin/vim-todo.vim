@@ -38,6 +38,15 @@ for todo in list_of_todos:
 endpython
 endfunction
 
+function! TodoProgress()
+python << endpython
+# print dir(vim_todo)
+this_file = vim.eval("bufname('%')")
+progress_line = vim_todo.todo_progress([this_file])
+vim.command("echom '%s'" % progress_line)
+endpython
+endfunction
+
 " Map keyboard shortcuts by default.
 if !exists('g:vim_todo_keys')
 	let g:vim_todo_keys = 1
@@ -53,14 +62,16 @@ if g:vim_todo_keys
 	:nnoremap <Leader>od :s/.*/\=TodoToggle()/<Cr>$
 	:nnoremap <Leader>ol :call TodoList()<Cr>
 
+	" List organizer progress of TODO / DONE / WAITING
+	:nnoremap <Leader>op :call TodoProgress()<Cr>
+
+
 	" nnoremap <Leader>d :.!text-task-toggle<Cr>$
 	"nnoremap <Leader>ol :!text-list-todos %<Cr>
 
 	" Sort file by completed vs TODO lines
 	" :nnoremap <Leader>os :%!done_to_top<Cr>
 
-	" List organizer progress of TODO / DONE / WAITING
-	" ":nnoremap <Leader>op :!text-task-progress %<Cr>
 	" Waiting 
 	" ":nnoremap <Leader>ow :.!text-task-toggle -w<Cr>$
 
