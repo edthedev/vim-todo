@@ -6,6 +6,23 @@ to add and remove TODO: to lines in files.
 
 .. _vim-todo: http://github.com/edthedev/vim_todo
 
+Installation 
+-----------------------------
+This plugin is packaged for use with Vundle_.
+This plugin requires Vim_ to be compiled with Python_ support.
+
+.. _Vim: http://vim.org/about.php
+.. _Python: http://python.org
+.. _Vundle: https://github.com/gmarik/vundle/blob/master/README.md 
+
+Install Vundle_ and then add 'edthedev/vim-rst' to your .vimrc.::
+
+    Bundle 'edthedev/vim-todo'
+
+Then, from within Vim, run BundleInstall.::
+
+    :BundleInstall
+
 Configuration
 --------------
 
