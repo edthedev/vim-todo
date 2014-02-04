@@ -4,7 +4,7 @@ vim-todo
 vim-todo_ is a Vim plugin that adds shortcuts 
 to add and remove TODO: to lines in files.
 
-.. _vim-todo: http://github.com/edthedev/vim_todo
+.. _vim-todo: http://github.com/edthedev/vim-todo
 
 Installation 
 -----------------------------
