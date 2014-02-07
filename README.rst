@@ -26,7 +26,7 @@ Then, from within Vim, run BundleInstall.::
 Configuration
 --------------
 
-Enable the built in keyboard mappings with:
+Enable the built in keyboard mappings with::
 
 	let g:vim_todo_keys = 1
 
@@ -35,18 +35,17 @@ Keyboard Mappings
 
 Default shortcut mappings are:
 
-Toggle the current line between TODO, DONE, WAITING, and WONT::
+# Toggle the current line between TODO, DONE, WAITING, and WONT::
 
 	<Leader>od 
 
-A line with none of those will gain TODO: the beginning.
-	
-List all TODO lines in the current buffer::
+## A line with none of those will gain TODO: the beginning.
+# List all TODO lines in the current buffer::
 
 	<Leader>ol
 
-Display completion count of TODO and DONE lines for the current buffer::
+# Display completion count of TODO and DONE lines for the current buffer::
 
     <Leader>op
 
-i.e. Completed: 1/4 
+## i.e. Completed: 1/4 
