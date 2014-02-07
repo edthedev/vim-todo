@@ -33,18 +33,19 @@ Enable the built in keyboard mappings with:
 Keyboard Mappings
 ------------------
 
-Default shortcut mappings:
+Default shortcut mappings are:
 
-	<Leader>od - Toggle the current line.
-		A line with TODO: or DONE: 
-			will become the other.
-		A line with neither will gain TODO:
+Toggle the current line between TODO, DONE, WAITING, and WONT::
+
+	<Leader>od 
+
+A line with none of those will gain TODO: the beginning.
 	
-	<Leader>ol - List all TODO lines
-		in the current buffer.
+List all TODO lines in the current buffer::
 
-    <Leader>op - Display completion count 
-        for the current buffer.
+	<Leader>ol
 
-        i.e. Completed: 1/4 
+Display completion count of TODO and DONE lines for the current buffer::
+    <Leader>op
 
+i.e. Completed: 1/4 
