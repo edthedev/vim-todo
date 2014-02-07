@@ -35,19 +35,14 @@ Keyboard Mappings
 
 Default shortcut mappings are:
 
-1. Toggle the current line between TODO, DONE, WAITING, and WONT::
+1. Toggle the current line between TODO, DONE, WAITING, and WONT.  A line with none of those will gain TODO: the beginning.::
 
 	<Leader>od 
 
-    a. A line with none of those will gain TODO: the beginning.
-
-1. List all TODO lines in the current buffer::
+2. List all TODO lines in the current buffer::
 
 	<Leader>ol
 
-1. Display completion count of TODO and DONE lines for the current buffer::
+3. Display completion count of TODO and DONE lines for the current buffer. i.e. Completed: 1/4::
 
     <Leader>op
-
-    Shows something like:
-    Completed: 1/4 
