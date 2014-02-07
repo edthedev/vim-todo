@@ -35,7 +35,7 @@ Keyboard Mappings
 
 Default shortcut mappings are:
 
-1. Toggle the current line between TODO, DONE, WAITING, and WONT.  A line with none of those will gain TODO: the beginning.::
+1. Toggle the current line between TODO, DONE, WAITING, and WONT.  A line with none of those will gain TODO: at the beginning.::
 
 	<Leader>od 
 
