@@ -46,6 +46,7 @@ List all TODO lines in the current buffer::
 	<Leader>ol
 
 Display completion count of TODO and DONE lines for the current buffer::
+
     <Leader>op
 
 i.e. Completed: 1/4 
