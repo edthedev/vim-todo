@@ -28,16 +28,6 @@ endpython
 return l:result
 endfunction
 
-function! TodoList()
-python << endpython
-# print dir(vim_todo)
-this_file = vim.eval("bufname('%')")
-list_of_todos = vim_todo.list_todos([this_file])
-for todo in list_of_todos:
-	vim.command("echom '%s'" % todo)
-endpython
-endfunction
-
 function! TodoProgress()
 python << endpython
 # print dir(vim_todo)
@@ -45,6 +35,16 @@ this_file = vim.eval("bufname('%')")
 progress_line = vim_todo.todo_progress([this_file])
 vim.command("echom '%s'" % progress_line)
 endpython
+endfunction
+
+" Quicklist all TODO lines in all open buffers.
+function! TodoList()
+	" Create a blank quicklist.
+	cex []
+	" Find all TODO items in all open buffers.
+	bufdo vimgrepadd /TODO/ %
+	" Open the quicklist, if it is not empty.
+	cw
 endfunction
 
 " Map keyboard shortcuts by default.
