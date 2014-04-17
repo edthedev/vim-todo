@@ -20,12 +20,19 @@ import vim_todo
 endpython
 
 function! TodoToggle()
+let s:line = getline(line('.'))
+" let s:cleanline = escape(s:line, '''')
+let s:cleanline = substitute(s:line, "'", "''", "g")
+" line = vim.eval("substitute(getline(line('.')),\"'\", \"g\")")
+
 python << endpython
-line = vim.eval("getline(line('.'))")
+line = vim.eval("s:cleanline")
+print line
 updated = vim_todo.toggle_todo(line)
 vim.command("let l:result = '%s'" % updated)
 endpython
-return l:result
+let l:cleanresult = substitute(l:result, "\'", "'", "g")
+return l:cleanresult
 endfunction
 
 function! TodoProgress()
