@@ -6,7 +6,19 @@ import re
 TODO = 'TODO:'
 TASK_STATES = [TODO, 'DONE:', 'WONT:','WAITING:'] 
 
+def set_todo(line, state):
+    ''' Change any state found into the selected state. '''
+
+    for current in TASK_STATES:
+        replacer = re.compile(current, re.IGNORECASE)
+
+        if current.lower() in line.lower():
+            # Return the line with current replaced with the target state.
+            return replacer.sub(state, line)
+    return line
+
 def toggle_todo(line):
+    ''' Toggle any state found to the next state in the cycle. '''
 
 # Alternate to the next task state in the cycle.
     statecycle = cycle(TASK_STATES)

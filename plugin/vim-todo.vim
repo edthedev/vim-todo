@@ -19,6 +19,23 @@ sys.path.insert(0, lib_path)
 import vim_todo 
 endpython
 
+
+function! TodoSet(state)
+let s:line = getline(line('.'))
+let s:cleanline = substitute(s:line, "'", "''", "g")
+
+python << endpython
+args = {
+	'line':vim.eval("s:cleanline"),
+	'state':vim.eval("a:state"),
+}
+updated = vim_todo.set_todo(**args)
+vim.command("let l:result = '%s'" % updated)
+endpython
+let l:cleanresult = substitute(l:result, "\'", "'", "g")
+return l:cleanresult
+endfunction
+
 function! TodoToggle()
 let s:line = getline(line('.'))
 " let s:cleanline = escape(s:line, '''')
@@ -72,6 +89,7 @@ if g:vim_todo_keys
 	" List organizer progress of TODO / DONE / WAITING
 	:nnoremap <Leader>op :call TodoProgress()<Cr>
 
+	:nnoremap <Leader>ow :call TodoSet('WONT:')<Cr>
 	" Sort file by completed vs TODO lines
 	" :nnoremap <Leader>os :%!done_to_top<Cr>
 
