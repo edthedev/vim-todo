@@ -4,18 +4,28 @@
 from itertools import cycle
 import re
 
-TODO = 'TODO:'
-TASK_STATES = [TODO, 'DONE:', 'WONT:','WAITING:'] 
+# If you prefer TODO style.
+# TODO = 'TODO:'
+# TASK_STATES = [TODO, 'DONE:', 'WONT:','WAITING:'] 
+
+# If you prefer Markdown [x] style.
+
+TODO = '[ ]'
+TASK_STATES = [TODO, '[x]', '[ WONT ]','[ WAITING ]']
+
+# TODO = '\[ \]'
+# TASK_STATES = [TODO, '\[x\]', '\[ WONT \]','\[ WAITING \]']
 
 def set_todo(line, state):
     ''' Change any state found into the selected state. '''
 
     for current in TASK_STATES:
-        replacer = re.compile(current, re.IGNORECASE)
+#        replacer = re.compile(current, re.IGNORECASE)
 
         if current.lower() in line.lower():
+            return line.replace(current, state)
             # Return the line with current replaced with the target state.
-            return replacer.sub(state, line)
+            # return replacer.sub(state, line)
     return line
 
 def toggle_todo(line):
@@ -28,11 +38,12 @@ def toggle_todo(line):
     for state in TASK_STATES:
         current, next = next, statecycle.next()
 #         print current
-        replacer = re.compile(current, re.IGNORECASE)
+        # replacer = re.compile(current, re.IGNORECASE)
 
         if current.lower() in line.lower():
             # Return the line with current replaced with next.
-            return replacer.sub(next, line)
+            # return replacer.sub(next, line)
+            return line.replace(current, next)
 
     # If we didn't do a replace, add a TODO at the beginning.
     prefix = ''
@@ -41,7 +52,7 @@ def toggle_todo(line):
         prefix += '#'
 
     todoer = re.compile('^', re.IGNORECASE)
-    return prefix + todoer.sub(TODO + ' ', line, count = 1)
+    return prefix + todoer.sub('\t' + TODO + ' ', line, count = 1)
 
 def list_todos(filelist):
     ''' List all TODO lines from a file. '''
