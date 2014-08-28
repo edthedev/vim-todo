@@ -1,6 +1,5 @@
 vim-todo
 ========
-
 vim-todo_ is a Vim plugin that adds shortcuts 
 to add and remove TODO: to lines in files.
 
@@ -46,3 +45,20 @@ Default shortcut mappings are:
 3. Display completion count of TODO and DONE lines for the current buffer. i.e. Completed: 1/4::
 
     <Leader>op
+
+Syntax Highlighting
+--------------------
+This syntax highlighting depends on very simple markdown-like checklists.
+
+	Location 1, Person 1
+		[ ] Item 1
+		[ ] Item 2
+		[x] Completed Item
+	Location 2, Person 2
+		[x] Completed Item
+		[ ] Item 1
+		[x] Completed Item
+
+This plugin will automatically apply the syntax highlighting to files named `*.todo`.
+
+The syntax highlighting is thanks to https://github.com/tomswartz07/vim-todo
