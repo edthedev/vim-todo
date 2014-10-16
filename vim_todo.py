@@ -11,7 +11,7 @@ import re
 # If you prefer Markdown [x] style.
 
 TODO = '[ ]'
-TASK_STATES = [TODO, '[x]', '[ WONT ]','[ WAITING ]']
+TASK_STATES = [TODO, '[x]', '[ SCHEDULED ]', '[ IN PROGRESS ]', '[ WONT ]','[ WAITING ]']
 
 # TODO = '\[ \]'
 # TASK_STATES = [TODO, '\[x\]', '\[ WONT \]','\[ WAITING \]']
@@ -52,7 +52,8 @@ def toggle_todo(line):
         prefix += '#'
 
     todoer = re.compile('^', re.IGNORECASE)
-    return prefix + todoer.sub('\t' + TODO + ' ', line, count = 1)
+    # return prefix + todoer.sub('\t' + TODO + ' ', line, count = 1)
+    return prefix + todoer.sub(TODO + ' ', line, count = 1)
 
 def list_todos(filelist):
     ''' List all TODO lines from a file. '''
